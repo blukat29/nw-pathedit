@@ -1,0 +1,10 @@
+{
+  "name": "nw-path-edit",
+  "main": "index.html",
+  "dependencies": {
+    "winreg": "0.0.12"
+  },
+  "window": {
+    "toolbar": false
+  }
+}
