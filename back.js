@@ -6,8 +6,10 @@ var regkey = new Winreg({
     key: "\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
 });
 
+var name = "TestPath";
+
 function get_values(callback) {
-  regkey.get("Path", function(err, data) {
+  regkey.get(name, function(err, data) {
     if (err) {
       callback(null);
     }
@@ -23,6 +25,6 @@ function get_values(callback) {
 
 function set_values(arr, callback) {
   var raw = arr.join(";");
-  regkey.set("Path", "REG_EXPAND_SZ", raw, callback);
+  regkey.set(name, "REG_EXPAND_SZ", raw, callback);
 }
 

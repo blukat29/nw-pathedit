@@ -3,8 +3,15 @@
 
 function list_elem(data) {
   var div = $("<div></div>");
-  div.html(data);
+  var input = $("<input></input>");
+  input.val(data);
+  input.addClass("inputbox");
+  div.append(input);
   return div;
+}
+
+function elem_val(obj) {
+  return obj.children().val();
 }
 
 function display() {
@@ -18,22 +25,25 @@ function display() {
     }
   });
 }
-
 $("#btnload").click(function() {
   display();
-})
+});
+
+$("#btnnew").click(function() {
+  $("#disp").append(list_elem(""));
+});
 
 function collect() {
   var arr = [];
   $("#disp").children().each(function() {
-    arr.push(this.innerHTML);
+    arr.push(elem_val($(this)));
   });
   set_values(arr, function(err) {
     if (err) alert("Error!");
     else alert("Success");
+    display();
   });
 }
-
 $("#btncoll").click(function() {
   collect();
 });

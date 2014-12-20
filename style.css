@@ -1,3 +1,7 @@
 .disp {
   border: solid 1px black;
 }
+
+.inputbox {
+  width: 100%;
+}
