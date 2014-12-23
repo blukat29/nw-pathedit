@@ -25,6 +25,9 @@ function display() {
     }
   });
 }
+$(window).load(function() {
+  display()
+});
 $("#btnload").click(function() {
   display();
 });
