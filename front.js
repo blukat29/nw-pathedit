@@ -1,6 +1,8 @@
 
 /* global: get_values, set_values */
 
+var gui = require('nw.gui');
+
 function list_elem(original, expanded) {
   var input = $("<input></input>");
   input.val(original);
@@ -55,5 +57,9 @@ function save() {
 }
 $("#btn_save").click(function() {
   save();
+});
+
+$("#a_github").click(function() {
+  gui.Shell.openExternal("https://github.com/blukat29/nw-pathedit");
 });
 
