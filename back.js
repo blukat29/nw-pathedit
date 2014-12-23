@@ -6,7 +6,7 @@ var regkey = new Winreg({
     key: "\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
 });
 
-var name = "TestPath";
+var name = "Path";
 
 function get_values(callback) {
   regkey.get(name, function(err, data) {
