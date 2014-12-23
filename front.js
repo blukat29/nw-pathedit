@@ -8,6 +8,7 @@ function list_elem(original, expanded) {
   var label = $("<div></div>");
   label.html(expanded);
   var div = $("<div></div>");
+  div.addClass("elem");
   div.append(input);
   div.append(label);
   return div;
