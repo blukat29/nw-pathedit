@@ -14,7 +14,7 @@ function elem_val(obj) {
   return obj.children().val();
 }
 
-function display() {
+function refresh() {
   get_values(function(arr) {
     if (!arr) alert("get error!");
     else {
@@ -26,17 +26,17 @@ function display() {
   });
 }
 $(window).load(function() {
-  display()
+  refresh()
 });
-$("#btnload").click(function() {
-  display();
+$("#btn_refresh").click(function() {
+  refresh();
 });
 
-$("#btnnew").click(function() {
+$("#btn_add").click(function() {
   $("#disp").append(list_elem(""));
 });
 
-function collect() {
+function save() {
   var arr = [];
   $("#disp").children().each(function() {
     arr.push(elem_val($(this)));
@@ -44,10 +44,10 @@ function collect() {
   set_values(arr, function(err) {
     if (err) alert("Error!");
     else alert("Success");
-    display();
+    refresh();
   });
 }
-$("#btncoll").click(function() {
-  collect();
+$("#btn_save").click(function() {
+  save();
 });
 
