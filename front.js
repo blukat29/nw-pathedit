@@ -1,12 +1,15 @@
 
 /* global: get_values, set_values */
 
-function list_elem(data) {
-  var div = $("<div></div>");
+function list_elem(original, expanded) {
   var input = $("<input></input>");
-  input.val(data);
+  input.val(original);
   input.addClass("inputbox");
+  var label = $("<div></div>");
+  label.html(expanded);
+  var div = $("<div></div>");
   div.append(input);
+  div.append(label);
   return div;
 }
 
@@ -15,12 +18,14 @@ function elem_val(obj) {
 }
 
 function refresh() {
-  get_values(function(arr) {
-    if (!arr) alert("get error!");
+  get_values(function(err, original, expanded) {
+    if (err) alert("get error!");
     else {
       $("#disp").html("");
-      for (var i=0; i<arr.length; i++) {
-        $("#disp").append(list_elem(arr[i]));
+      for (var i=0; i<original.length; i++) {
+        var o = original[i];
+        var e = expanded[i];
+        $("#disp").append(list_elem(o, e));
       }
     }
   });
@@ -33,7 +38,7 @@ $("#btn_refresh").click(function() {
 });
 
 $("#btn_add").click(function() {
-  $("#disp").append(list_elem(""));
+  $("#disp").append(list_elem("", "&nbsp;"));
 });
 
 function save() {
